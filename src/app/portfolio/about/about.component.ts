@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from "@angular/core";
+import { BioService } from "../../core/services/bio.service";
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: "app-about",
+  templateUrl: "./about.component.html",
+  styleUrls: ["./about.component.css"]
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
+    bio$ = this.bioService.getBio();
 
-  constructor() { }
+    respOptions = [
+        { viewClasses: 'd-none d-md-flex', headingClass: 'display-3', useSmallerHeadings: false },
+        { viewClasses: 'd-flex d-md-none', headingClass: '', useSmallerHeadings: true }
+    ]
 
-  ngOnInit(): void {
-  }
-
+  constructor(private bioService: BioService) { }
 }
